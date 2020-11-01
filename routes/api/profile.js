@@ -39,7 +39,7 @@ router.post(
   [
     auth,
     [
-      check('status]', 'Status is required').not().isEmpty(),
+      check('status', 'Status is required').not().isEmpty(),
       check('skills', 'Skills is required').not().isEmpty(),
     ],
   ],
