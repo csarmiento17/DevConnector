@@ -9,6 +9,7 @@ import {
   UPDATE_PROFILE,
   ACCOUNT_DELETED,
   GET_REPOS,
+  NO_REPOS,
 } from './constants';
 
 //Get current user's profile
@@ -21,6 +22,8 @@ export const getCurrentProfile = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
+    dispatch({ type: CLEAR_PROFILE });
+
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
@@ -74,8 +77,9 @@ export const getGithubRepos = (username) => async (dispatch) => {
     });
   } catch (err) {
     dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
+      // type: PROFILE_ERROR,
+      // payload: { msg: err.response.statusText, status: err.response.status },
+      type: NO_REPOS,
     });
   }
 };
