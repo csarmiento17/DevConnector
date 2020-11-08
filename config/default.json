@@ -2,6 +2,4 @@
     "mongoURI": "mongodb+srv://csarmiento:P@ssw0rd@devconnector.cudch.mongodb.net/<dbname>?retryWrites=true&w=majority",
     "jwtSecret": "mySecretToken",
     "githubToken": "8de89b54bff843e837f6877343bf136e24408169"
-    // "githubClientId":"264b7f70fe84a501c8a5",
-    // "githubSecret":"966eb039799ee14afbdc374d4f558cb7ef34c236"
 }
