@@ -80,14 +80,8 @@ export const deletePost = (id) => async (dispatch) => {
 
 // Add Post
 export const addPost = (formData) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
-
   try {
-    const res = await api.post('/posts', formData, config);
+    const res = await api.post('/posts', formData);
 
     dispatch({
       type: ADD_POST,
@@ -119,14 +113,8 @@ export const getPost = (id) => async (dispatch) => {
 
 // Add Comment
 export const addComment = (postId, formData) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
-
   try {
-    const res = await api.post(`/posts/comment/${postId}`, formData, config);
+    const res = await api.post(`/posts/comment/${postId}`, formData);
 
     dispatch({
       type: ADD_COMMENT,
@@ -145,7 +133,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
 // Delete Comment
 export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {
-    const res = await api.delete(`/posts/comment/${postId}/${commentId}`);
+    await api.delete(`/posts/comment/${postId}/${commentId}`);
 
     dispatch({
       type: REMOVE_COMMENT,

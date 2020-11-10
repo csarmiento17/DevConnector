@@ -10,8 +10,6 @@ import {
   LOGOUT,
 } from './constants';
 
-import setAuthToken from '../utils/setAuthToken';
-
 // Load User
 export const loadUser = () => async (dispatch) => {
   try {
