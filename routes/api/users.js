@@ -48,6 +48,12 @@ router.post(
         { forceHttps: true }
       );
 
+      user = new User({
+        name,
+        email,
+        avatar,
+        password,
+      });
       // Encrypt the password using bcrypt
       // salt create hashes
       const salt = await bcrypt.genSalt(10);
