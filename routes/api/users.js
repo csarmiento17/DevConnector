@@ -3,7 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
-// const normalize = require('normalize-url');
+const normalize = require('normalize-url');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
@@ -45,12 +45,14 @@ router.post(
         d: 'mm', // default image
       });
 
-      user = new User({
-        name,
-        email,
-        avatar,
-        password,
-      });
+      const avatar = normalize(
+        gravatar.url(email, {
+          s: '200',
+          r: 'pg',
+          d: 'mm',
+        }),
+        { forceHttps: true }
+      );
 
       // Encrypt the password using bcrypt
       // salt create hashes
