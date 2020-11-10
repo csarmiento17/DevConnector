@@ -6,8 +6,7 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
-import CreateProfile from './components/profile-forms/CreateProfile';
-import EditProfile from './components/profile-forms/EditProfile';
+import ProfileForm from './components/profile-forms/ProfileForm';
 import AddExperience from './components/profile-forms/AddExperience';
 import AddEducation from './components/profile-forms/AddEducation';
 import Profiles from './components/profiles/Profiles';
@@ -15,6 +14,8 @@ import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
 import PrivateRoute from './components/routing/PrivateRoute';
+import NotFound from './components/layout/NotFound';
+import { LOGOUT } from './actions/constants';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -29,7 +30,16 @@ if (localStorage.token) {
 
 const App = () => {
   useEffect(() => {
+    // check for token in LS
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
     store.dispatch(loadUser());
+
+    // log user out from all tabs if they log out in one tab
+    window.addEventListener('storage', () => {
+      if (!localStorage.token) store.dispatch({ type: LOGOUT });
+    });
   }, []);
   return (
     <Provider store={store}>
@@ -48,12 +58,12 @@ const App = () => {
               <PrivateRoute
                 exact
                 path="/create-profile"
-                component={CreateProfile}
+                component={ProfileForm}
               />
               <PrivateRoute
                 exact
                 path="/edit-profile"
-                component={EditProfile}
+                component={ProfileForm}
               />
               <PrivateRoute
                 exact
@@ -67,6 +77,7 @@ const App = () => {
               />
               <PrivateRoute exact path="/posts" component={Posts} />
               <PrivateRoute exact path="/posts/:id" component={Post} />
+              <Route component={NotFound} />
             </Switch>
           </section>
         </Fragment>
