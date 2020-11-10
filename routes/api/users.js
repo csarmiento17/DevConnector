@@ -3,7 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
-const normalize = require('normalize-url');
+// const normalize = require('normalize-url');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
@@ -39,21 +39,17 @@ router.post(
           .json({ errors: [{ msg: 'User already exists' }] });
       }
 
-      const avatar = normalize(
-        gravatar.url(email, {
+      const avatar = gravatar.url(email, {
           s: '200', // size
           r: 'pg', // rating
           d: 'mm', // default image
         }),
-        { forceHttps: true }
-      );
-
-      user = new User({
-        name,
-        email,
-        avatar,
-        password,
-      });
+        user = new User({
+          name,
+          email,
+          avatar,
+          password,
+        });
 
       // Encrypt the password using bcrypt
       // salt create hashes
@@ -73,7 +69,7 @@ router.post(
       jwt.sign(
         payload,
         config.get('jwtSecret'),
-        { expiresIn: 360000 },
+        { expiresIn: '5 days' },
         (err, token) => {
           if (err) throw err;
           res.json({ token });
