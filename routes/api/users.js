@@ -40,16 +40,17 @@ router.post(
       }
 
       const avatar = gravatar.url(email, {
-          s: '200', // size
-          r: 'pg', // rating
-          d: 'mm', // default image
-        }),
-        user = new User({
-          name,
-          email,
-          avatar,
-          password,
-        });
+        s: '200', // size
+        r: 'pg', // rating
+        d: 'mm', // default image
+      });
+
+      user = new User({
+        name,
+        email,
+        avatar,
+        password,
+      });
 
       // Encrypt the password using bcrypt
       // salt create hashes
