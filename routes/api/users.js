@@ -3,7 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
-
+const normalize = require('normalize-url');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
@@ -39,11 +39,14 @@ router.post(
           .json({ errors: [{ msg: 'User already exists' }] });
       }
 
-      const avatar = gravatar.url(email, {
-        s: '200', // size
-        r: 'pg', // rating
-        d: 'mm', // default image
-      });
+      const avatar = normalize(
+        gravatar.url(email, {
+          s: '200', // size
+          r: 'pg', // rating
+          d: 'mm', // default image
+        }),
+        { forceHttps: true }
+      );
 
       user = new User({
         name,
