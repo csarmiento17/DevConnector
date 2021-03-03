@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/devconnector/static/css/main.a76a7795.chunk.css",
+    "main.js": "/devconnector/static/js/main.72e432ae.chunk.js",
+    "main.js.map": "/devconnector/static/js/main.72e432ae.chunk.js.map",
+    "runtime-main.js": "/devconnector/static/js/runtime-main.f6ae83bd.js",
+    "runtime-main.js.map": "/devconnector/static/js/runtime-main.f6ae83bd.js.map",
+    "static/js/2.df451d9f.chunk.js": "/devconnector/static/js/2.df451d9f.chunk.js",
+    "static/js/2.df451d9f.chunk.js.map": "/devconnector/static/js/2.df451d9f.chunk.js.map",
+    "index.html": "/devconnector/index.html",
+    "precache-manifest.38b43fb2aa5da03aefaf1bd4368c8a02.js": "/devconnector/precache-manifest.38b43fb2aa5da03aefaf1bd4368c8a02.js",
+    "service-worker.js": "/devconnector/service-worker.js",
+    "static/css/main.a76a7795.chunk.css.map": "/devconnector/static/css/main.a76a7795.chunk.css.map",
+    "static/js/2.df451d9f.chunk.js.LICENSE.txt": "/devconnector/static/js/2.df451d9f.chunk.js.LICENSE.txt",
+    "static/media/Spinner.gif": "/devconnector/static/media/Spinner.7eade3a8.gif",
+    "static/media/App.css": "/devconnector/static/media/showcase.4b31330b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f6ae83bd.js",
+    "static/js/2.df451d9f.chunk.js",
+    "static/css/main.a76a7795.chunk.css",
+    "static/js/main.72e432ae.chunk.js"
+  ]
+}
